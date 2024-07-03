@@ -23,7 +23,7 @@ function studentGrades(score = 67){
             grade = 'E';
             break;
     }
-    console.log(`The student\'s grade is ${grade} `)
+    //console.log(`The student\'s grade is ${grade} `)
     return grade;    
 }
 
