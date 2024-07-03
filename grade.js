@@ -2,7 +2,10 @@
 // A > 79, B - 60 to 79, C -  59 to 49, D - 40 to 49, E - less 40.
 
 function studentGrades(score = 67){
+    //Variable declaration for later re-assignment within the switch statement.
     let grade;
+
+    //Switch statement handling grades on case by case basis
     switch (true) {        
         case score > 70:
             grade = 'A';
@@ -20,7 +23,7 @@ function studentGrades(score = 67){
             grade = 'E';
             break;
     }
-    //console.log(`The student\'s grade is ${grade} `)
+    console.log(`The student\'s grade is ${grade} `)
     return grade;    
 }
 
