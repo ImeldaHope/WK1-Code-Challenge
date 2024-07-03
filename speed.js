@@ -4,9 +4,11 @@
 function speedTicket(speed = 85){
     const speedLimit = 70;
 
+    //Checks if speed is greater than limit. Otherwise returns 'Ok'.
     if(speed > speedLimit){
         const demerit = Math.floor((speed - speedLimit)/5);
 
+        //Checks if the demerit points is above 12 thus suspending license. Otherwise returns points awarded.
         if(demerit >= 12){
             return `License suspended`;
         } else {
