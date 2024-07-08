@@ -24,8 +24,8 @@ speedInput.question('Please enter your speed in numbers: ',(speedValue) => {
             const demerit = Math.floor((speed - speedLimit)/5);
 
             //Checks if the demerit points is above 12 thus suspending license. Otherwise returns points awarded.
-            if(demerit >= 12){
-                console.log("License suspended");
+            if(demerit > 12){
+                console.log("License suspended");                
                 return `License suspended`;
             } else {
                 console.log(`Points: ${demerit}`);
