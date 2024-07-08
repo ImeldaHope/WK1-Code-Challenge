@@ -19,7 +19,7 @@ gradeInput.question('Please enter your score in numbers: ',(inputScore) => {
         let grade;
         //Switch statement handling grades on case by case basis
         switch (true) {        
-            case score > 70:
+            case score > 70 && score <= 100:
                 grade = 'A';
                 break;
             case score >=60 && score <= 79:
@@ -30,9 +30,12 @@ gradeInput.question('Please enter your score in numbers: ',(inputScore) => {
                 break;
             case score >= 40 && score < 49:
                 grade = 'D';
-                break;    
-            default:
+                break;
+            case score >= 0 && score < 40:
                 grade = 'E';
+                break;        
+            default:
+                grade = `${grades} which is not a valid score`;
                 break;
         }
         console.log(`The student\'s grade is ${grade} `)
