@@ -84,10 +84,10 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
         //Deduct personal relief and any other applicable relief to PAYE to get PAYE due.
         if(tax > reliefs[0]["Personal Relief"]){
             const payeDue = tax - reliefs[0]["Personal Relief"];
-            //console.log(`Tax due is: ${payeDue}`);
+            console.log(`Tax due is: ${payeDue}`);
             return payeDue;            
         } else {
-            //console.log(`Tax due is: ${tax}`);
+            console.log(`Tax due is: ${tax}`);
             return tax;
         }
     }
@@ -96,7 +96,7 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
     function health(gross){    
         //Find tier the gross salary falls under and returns the exact deduction.
         const healthDeductions = nhifRates.find(rate => gross >= rate.lowerLimit && gross <= rate.upperLimit);
-        //console.log(`The NHIF deduction is: ${healthDeductions.deduction}`);
+        console.log(`The NHIF deduction is: ${healthDeductions.deduction}`);
         return healthDeductions?.deduction;   
     }
 
@@ -120,7 +120,7 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
                 return tierOneLimit + tierTwoLimit;
             }
         })()
-        //console.log(`The pension deductible is: ${pensionDeduction}`);
+        console.log(`The pension deductible is: ${pensionDeduction}`);
         return pensionDeduction;
 
     }
@@ -135,7 +135,7 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
         //Calculates the levy based on gross salary
         const hutTax = grossSalary * housingLevy;
 
-        //console.log(`The housing levy is: ${hutTax}`);
+        console.log(`The housing levy is: ${hutTax}`);
         return hutTax;    
     }
 
