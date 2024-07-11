@@ -67,7 +67,7 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
     //Calculate net salary. Net = Taxable income - (PAYE + housing) 
 
     function netSalary(){
-        const net = payableTax - paye(salary);
+        const net = payableTax - paye(salary,taxRates);
         console.log(`Your net salary is: ${net}`);
         return net;
     }
@@ -91,7 +91,7 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
             return tax;
         }
     }
-
+   
     //Calculates NHIF deductions on gross salary
     function health(gross){    
         //Find tier the gross salary falls under and returns the exact deduction.
@@ -107,16 +107,16 @@ salaryInput.question('Please enter your basic salary amount in numbers: ',(basic
         */   
 
         const tierOneLimit = nssfRates[0].upperLimit * nssfRates[0].rate/100;
-        const tierTwoLimit = nssfRates[1].upperLimit * nssfRates[1].rate/100;
+        const tierTwoLimit = (nssfRates[1].upperLimit - nssfRates[0].upperLimit) * nssfRates[1].rate/100;
 
         const pensionDeduction = (() => {
             //Finds the tier where the gross salary falls and determines the deductions on both tiers where applicable.
             //This code ignores availability of an alternative pension scheme.
             if(gross >= nssfRates[0].lowerLimit && gross <= nssfRates[0].upperLimit){
                 return gross * nssfRates[0].rate/100;
-            } else if (gross >= nssfRates[1].lowerLimit && gross <= nssfRates[1].upperLimit){
+            } else if (gross >= nssfRates[1].lowerLimit && gross <= nssfRates[1].upperLimit){                
                 return (gross - nssfRates[0].upperLimit)* nssfRates[1].rate/100 + tierOneLimit;
-            } else {
+            } else {                
                 return tierOneLimit + tierTwoLimit;
             }
         })()
